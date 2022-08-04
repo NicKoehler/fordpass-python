@@ -178,7 +178,7 @@ class Vehicle(object):
                 f"Refresh token expires in {self.refresh_expire_time - time.time()} seconds"
             )
 
-    def status(self):
+    def statuus(self):
         """Get the status of the vehicle"""
 
         self.__acquireToken()
@@ -201,6 +201,13 @@ class Vehicle(object):
         """
         return self.__requestAndPoll(
             "PUT", f"{API_URI}/api/vehicles/v5/{self.vin}/engine/start"
+        )
+    def status(self):
+        """
+        Issue a start command to the engine
+        """
+        return self.__requestAndPoll(
+            "PUT", f"{API_URI}/api/vehicles/v5/{self.vin}/status"
         )
 
     def stop(self):
