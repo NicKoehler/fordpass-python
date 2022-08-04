@@ -186,7 +186,7 @@ class Vehicle(object):
         headers = {**apiHeaders, "auth-token": self.access_token}
 
         r = requests.get(
-            f"{API_URI}/api/vehicles", headers=headers
+            f"{API_URI}", headers=headers
         )
 
         if r.status_code == 200:
