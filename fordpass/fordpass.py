@@ -195,7 +195,7 @@ class Vehicle(object):
         else:
             r.raise_for_status()
            
-     def test(self):
+    def test(self):
         """Get the status test of the vehicle"""
 
         self.__acquireToken()
