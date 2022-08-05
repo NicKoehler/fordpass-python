@@ -23,3 +23,5 @@ if __name__ == "__main__":
         # time.sleep(10) # Wait 10 seconds
 
         # r.lock() # Lock the doors
+        
+        # r.refresh() # Refresh force statut
