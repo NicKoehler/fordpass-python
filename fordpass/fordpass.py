@@ -191,7 +191,7 @@ class Vehicle(object):
 
         if r.status_code == 200:
             result = r.json()
-            return result['vehiclestatus']
+            return result["vehiclestatus"]
         else:
             r.raise_for_status()
 
