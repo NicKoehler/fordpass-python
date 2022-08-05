@@ -210,7 +210,7 @@ class Vehicle(object):
         status = self.__makeRequest(
             "PUT", f"{API_URI}/api/vehicles/v2/{self.vin}/status", None, None
         )
-        return status.json()["status"]
+        return status.json()
 
     def stop(self):
         """
