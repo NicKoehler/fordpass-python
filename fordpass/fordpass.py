@@ -207,7 +207,7 @@ class Vehicle(object):
         Issue a start command to the engine
         """
         return self.__requestAndPoll(
-            "PUT", f"{API_URI}/api/vehicles/v5/{self.vin}/status"
+            "PUT", f"{API_URI}/api/vehicles/v5/{self.vin}/refreshstatus"
         )
 
     def stop(self):
