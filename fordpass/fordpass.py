@@ -202,12 +202,13 @@ class Vehicle(object):
         return self.__requestAndPoll(
             "PUT", f"{API_URI}/api/vehicles/v5/{self.vin}/engine/start"
         )
+
     def test(self):
         """
         Issue a start command to the engine
         """
-        return self.__requestAndPoll(
-            "PUT", f"{API_URI}/api/vehicles/v2/{self.vin}/status"
+        return self..__makeRequest(
+            "PUT", f"{baseUrl}/api/vehicles/v2/{self.vin}/status", None, None
         )
 
     def stop(self):
@@ -271,6 +272,6 @@ class Vehicle(object):
 
         if command.status_code == 200:
             result = command.json()
-            return self.__pollStatus(url, result)
+            return self.__pollStatus(url, result["commandId"])
         else:
             command.raise_for_status()
