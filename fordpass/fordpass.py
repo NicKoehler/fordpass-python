@@ -205,9 +205,9 @@ class Vehicle(object):
 
     def test(self):
         """
-        Issue a start command to the engine
+    
         """
-        statut = self.__makeRequest(
+        status = self.__makeRequest(
             "PUT", f"{API_URI}/api/vehicles/v2/{self.vin}/status", None, None
         )
         return status.json()["status"]
