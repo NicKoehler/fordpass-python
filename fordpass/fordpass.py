@@ -226,6 +226,16 @@ class Vehicle(object):
         return self.__requestAndPoll(
             "DELETE", f"{API_URI}/api/vehicles/v5/{self.vin}/doors/lock"
         )
+    def refresh(self):
+        """
+        Issue a force refresh command to the statut of vehicule
+        """
+        
+        self.__acquireToken()
+
+        return self.__makeRequest(
+            "PUT", f"{API_URI}/api/vehicles/v2/{self.vin}/status", None, None
+        )
 
     def __makeRequest(self, method, url, data=None, params=None):
         """
