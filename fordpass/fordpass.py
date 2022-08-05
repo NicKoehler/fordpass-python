@@ -271,6 +271,6 @@ class Vehicle(object):
 
         if command.status_code == 200:
             result = command.json()
-            return self.__pollStatus(url, result["commandId"])
+            return self.__pollStatus(url, result)
         else:
             command.raise_for_status()
