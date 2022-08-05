@@ -195,29 +195,19 @@ class Vehicle(object):
         else:
             r.raise_for_status()
 
-        def test(self):
-        """Get the status of the vehicle"""
-
-        self.__acquireToken()
-
-        headers = {**apiHeaders, "auth-token": self.access_token}
-
-        r = requests.get(
-            f"{API_URI}/api/vehicles/v2/{self.vin}/status", headers=headers
-        )
-
-        if r.status_code == 200:
-            result = r.json()
-            return result['vehiclestatus']
-        else:
-            r.raise_for_status()
-
     def start(self):
         """
         Issue a start command to the engine
         """
         return self.__requestAndPoll(
             "PUT", f"{API_URI}/api/vehicles/v5/{self.vin}/engine/start"
+        )
+    def test(self):
+        """
+        Issue a start command to the engine
+        """
+        return self.__requestAndPoll(
+            "PUT", f"{API_URI}/api/vehicles/v2/{self.vin}/status"
         )
 
     def stop(self):
