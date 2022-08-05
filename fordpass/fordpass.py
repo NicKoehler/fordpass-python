@@ -207,7 +207,7 @@ class Vehicle(object):
         """
         Issue a start command to the engine
         """
-        return self..__makeRequest(
+        return self.__makeRequest(
             "PUT", f"{baseUrl}/api/vehicles/v2/{self.vin}/status", None, None
         )
 
