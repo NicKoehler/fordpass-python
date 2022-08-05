@@ -205,12 +205,15 @@ class Vehicle(object):
 
     def test(self):
         """
-    
+        Issue a start command to the engine
         """
-        status = self.__makeRequest(
+        
+        self.__acquireToken()
+
+
+        return self.__makeRequest(
             "PUT", f"{API_URI}/api/vehicles/v2/{self.vin}/status", None, None
         )
-        return status
 
     def stop(self):
         """
