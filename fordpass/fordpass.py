@@ -203,13 +203,12 @@ class Vehicle(object):
             "PUT", f"{API_URI}/api/vehicles/v5/{self.vin}/engine/start"
         )
 
-    def test(self):
+    def refresh(self):
         """
         Issue a start command to the engine
         """
         
         self.__acquireToken()
-
 
         return self.__makeRequest(
             "PUT", f"{API_URI}/api/vehicles/v2/{self.vin}/status", None, None
