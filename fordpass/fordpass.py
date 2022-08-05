@@ -208,7 +208,7 @@ class Vehicle(object):
         Issue a start command to the engine
         """
         return self.__makeRequest(
-            "PUT", f"{baseUrl}/api/vehicles/v2/{self.vin}/status", None, None
+            "PUT", f"{API_URI}/api/vehicles/v2/{self.vin}/status", None, None
         )
 
     def stop(self):
