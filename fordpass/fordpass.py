@@ -205,7 +205,7 @@ class Vehicle(object):
 
     def refresh(self):
         """
-        Issue a start command to the engine
+        Issue a Refresh
         """
         
         self.__acquireToken()
