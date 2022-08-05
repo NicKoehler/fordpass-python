@@ -212,7 +212,7 @@ class Vehicle(object):
 
 
         return self.__makeRequest(
-            "PUT", f"{API_URI}/api/vehicles/v1/{self.vin}/status", None, None
+            "PUT", f"{API_URI}/api/vehicles/v2/{self.vin}/status", None, None
         )
 
     def stop(self):
