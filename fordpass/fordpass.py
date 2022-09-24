@@ -186,7 +186,7 @@ class Vehicle(object):
         headers = {**apiHeaders, "auth-token": self.access_token}
 
         r = requests.get(
-            f"{API_URI}/api/vehicles/v4/{self.vin}/status", headers=headers
+            f"{API_URI}/api/vehicles/v5/{self.vin}/status", headers=headers
         )
 
         if r.status_code == 200:
@@ -201,6 +201,17 @@ class Vehicle(object):
         """
         return self.__requestAndPoll(
             "PUT", f"{API_URI}/api/vehicles/v5/{self.vin}/engine/start"
+        )
+
+    def refresh(self):
+        """
+        Issue a Refresh
+        """
+        
+        self.__acquireToken()
+
+        return self.__makeRequest(
+            "PUT", f"{API_URI}/api/vehicles/v2/{self.vin}/status", None, None
         )
 
     def stop(self):
@@ -225,6 +236,20 @@ class Vehicle(object):
         """
         return self.__requestAndPoll(
             "DELETE", f"{API_URI}/api/vehicles/v5/{self.vin}/doors/lock"
+        )
+     def signal(self):
+        """
+        Issue an signal
+        """
+        return self.__requestAndPoll(
+            "PUT", f"{API_URI}/api/vehicles/v1/{self.vin}/signal"
+        )
+    def signaloff(self):
+        """
+        Issue off signal
+        """
+        return self.__requestAndPoll(
+            "DELETE", f"{API_URI}/api/vehicles/v1/{self.vin}/signal"
         )
 
     def __makeRequest(self, method, url, data=None, params=None):
